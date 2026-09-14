@@ -27,6 +27,7 @@ filelock==3.18.0
 fonttools==4.55.8
 gitdb==4.0.12
 GitPython==3.1.46
+gunicorn==26.2.0
 idna==3.11
 Jinja2==3.1.6
 jmespath==1.1.0
@@ -57,6 +58,7 @@ psycopg2-binary==2.9.10
 pyarrow==22.0.0
 pycparser==3.0
 pydeck==0.9.1
+pygame==2.6.1
 pyparsing==3.2.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.3
