@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&j6%m_*n51l34(g^e3gh$!r_z*0jq6mo0l$owv^f5rdssn1o(y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["origami-limousines.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
