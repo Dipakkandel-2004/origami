@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Services | Origami Limousines{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow purple">OUR SERVICES</p>
+    <h1>Travel support from arrival to departure.</h1>
+    <p>Build a trip that fits your group, schedule and priorities.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 50px;">
+  <div class="container">
+    <div class="card-grid three">
+      {% for service in services %}
+      <article class="service-card">
+        {% if service.image %}
+        <img src="{{ service.image.url }}" alt="{{ service.title }}"
+          style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; display: block;" />
+        {% endif %}
+        <span class="service-number">{{ service.order|stringformat:"02d" }}</span>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

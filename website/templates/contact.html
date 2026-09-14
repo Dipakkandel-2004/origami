@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Contact | Origami Limousines{% endblock %}
+
+{% block content %}
+<style>
+  .contact-details a {
+    text-decoration: none !important;
+    font-weight: 600;
+    color: var(--color-purple, #6b3c73);
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .contact-details a:hover {
+    color: #ef6d2b;
+    opacity: 0.85;
+  }
+</style>
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow purple">GET IN TOUCH</p>
+    <h1>Let's start planning your Japan journey.</h1>
+    <p>Tell us what you have in mind and our team can help shape the trip.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-layout">
+    <div>
+      <p class="eyebrow purple">CONTACT</p>
+      <h2>Tell us about your trip.</h2>
+      <p class="lead">Share your dates, destinations, group size and anything else that matters to you.</p>
+      <div class="contact-details">
+        <p><strong>Phone</strong><br><a href="tel:+81XXXXXXXXXX">+81 XX XXXX XXXX</a></p>
+        <p><strong>WhatsApp</strong><br><a href="https://wa.me/81XXXXXXXXX" target="_blank"
+            rel="noopener noreferrer">Message us on WhatsApp</a></p>
+        <p><strong>Instagram</strong><br><a href="https://instagram.com/origamilimousines" target="_blank"
+            rel="noopener noreferrer">@origamilimousines</a></p>
+        <p><strong>Facebook</strong><br><a href="https://facebook.com/origamilimousines" target="_blank"
+            rel="noopener noreferrer">Origami Limousines</a></p>
+        <p style="color: black; font-weight: bold;"><strong>Location</strong><br>Osaka, Japan</p>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contact-form" method="POST" action="{% url 'contact' %}">
+      {% csrf_token %}
+
+      <label>Name<input type="text" name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Travel Dates<input type="text" name="travel_dates" placeholder="e.g. 10-15 October 2026"></label>
+      <label>Message<textarea name="message" rows="6" placeholder="Tell us about your trip..."
+          required></textarea></label>
+
+      <button type="submit" class="btn btn-primary">Send Inquiry</button>
+      <p class="form-status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+{% endblock %}

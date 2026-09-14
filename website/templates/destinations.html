@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Destinations | Origami Limousines{% endblock %}
+
+{% block content %}
+<style>
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .dcard {
+    display: block !important;
+    position: static !important;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+  }
+
+  .dcard-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+  }
+
+  .dcard-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .dcard:hover .dcard-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .dcard-body {
+    position: static !important;
+    background: #fff !important;
+    padding: 1.25rem 1.5rem 1.5rem !important;
+  }
+
+  .dcard-region {
+    display: block;
+    color: var(--color-purple, #6b3c73) !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .dcard-name {
+    margin: 0.4rem 0 0.5rem !important;
+    color: #1a1a1a !important;
+    font-size: 1.3rem !important;
+  }
+
+  .dcard-desc {
+    margin: 0 !important;
+    color: #555 !important;
+    font-size: 0.95rem !important;
+  }
+</style>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow purple">DESTINATIONS</p>
+    <h1>One country. Countless journeys.</h1>
+    <p>Explore Japan's most-loved cities and regions with a plan built around you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="dest-grid">
+      {% for destination in destinations %}
+      <a href="{% url 'destination_detail' destination.slug %}" data-route class="dcard">
+        {% if destination.image %}
+        <div class="dcard-img-wrap">
+          <img src="{{ destination.image.url }}" alt="{{ destination.name }}" />
+        </div>
+        {% endif %}
+        <div class="dcard-body">
+          <span class="dcard-region">{{ destination.region }}</span>
+          <h3 class="dcard-name">{{ destination.name }}</h3>
+          <p class="dcard-desc">{{ destination.short_description }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

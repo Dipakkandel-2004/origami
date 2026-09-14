@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{% if destination %}{{ destination.name }} | Origami Limousines{% else %}Destination Not Found |
+Origami Limousines{% endif %}{% endblock %}
+
+{% block content %}
+{% if destination %}
+{% if destination.image %}
+<section class="destination-detail-hero"
+  style="background-color: var(--color-purple); background-image: linear-gradient(115deg, rgba(33,22,42,0.55), rgba(239,109,43,0.35)), url('{{ destination.image.url }}'); background-size: cover; background-position: center;">
+  {% else %}
+  <section class="destination-detail-hero"
+    style="background-color: var(--color-purple); background-image: linear-gradient(115deg, #21162a, #6b3c73 48%, #ef6d2b);">
+    {% endif %}
+    <div class="container destination-detail-content">
+      <p class="eyebrow">{{ destination.region }}</p>
+      <h1>{{ destination.name }}</h1>
+      <p>{{ destination.short_description }}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="eyebrow purple">DISCOVER {{ destination.name|upper }}</p>
+        <h2>Experience it your way.</h2>
+      </div>
+      <div>
+        <p class="lead">{{ destination.description }}</p>
+        <a href="{% url 'contact' %}" data-route class="btn btn-primary">Plan This Trip</a>
+      </div>
+    </div>
+  </section>
+  {% else %}
+  <section class="section">
+    <div class="container">
+      <h1>Destination not found.</h1>
+      <a href="{% url 'destinations' %}" data-route class="text-link">← Back to destinations</a>
+    </div>
+  </section>
+  {% endif %}
+  {% endblock %}

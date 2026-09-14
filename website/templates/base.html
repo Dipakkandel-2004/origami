@@ -1,0 +1,82 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Origami Limousines - Japan DMC and Transporter." />
+  <title>{% block title %}Origami Limousines | Japan DMC &amp; Transporter{% endblock %}</title>
+  <link rel="icon" href="{% static 'logo\favicon.ico' %}" />
+  <link rel="stylesheet" href="{% static 'css/variables.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+  <style>
+    .site-footer a {
+      text-decoration: none !important;
+    }
+
+    .brand-logo {
+      height: 40px !important;
+      width: auto !important;
+      max-width: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a href="{% url 'home' %}" class="brand" data-route>
+        <img src="{% static 'logo/Logo.png' %}" alt="Origami Limousines" class="brand-logo" />
+        <span class="brand-text"><strong>Origami</strong><small>Limousines</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      <div class="nav-links">
+        <a href="{% url 'home' %}" data-route>Home</a>
+        <a href="{% url 'about' %}" data-route>About</a>
+        <a href="{% url 'services' %}" data-route>Services</a>
+        <a href="{% url 'destinations' %}" data-route>Destinations</a>
+        <a href="{% url 'contact' %}" class="nav-cta" data-route>Plan Your Trip</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="app">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="{% url 'home' %}" class="brand footer-brand" data-route>
+          <span class="brand-mark">折</span>
+          <span class="brand-text"><strong>Origami</strong><small>Limousines</small></span>
+        </a>
+        <p>Japan DMC &amp; Transporter</p>
+        <p class="footer-description">Comfortable transportation, customized journeys and local travel support across
+          Japan.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="{% url 'about' %}" data-route>About</a>
+        <a href="{% url 'services' %}" data-route>Services</a>
+        <a href="{% url 'destinations' %}" data-route>Destinations</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="{% url 'contact' %}" data-route>Plan Your Trip</a>
+        <a href="https://wa.me/81XXXXXXXXX" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://instagram.com/origamilimousines" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2026 Origami Limousines. All rights reserved.</span>
+      <span>Osaka, Japan</span>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/script.js' %}?v=2"></script>
+</body>
+
+</html>
