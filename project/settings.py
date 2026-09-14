@@ -74,7 +74,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = "project.urls"
 
 STATICFILES_DIRS = [BASE_DIR / "website" / "static"]
-STATIC_URL = "static/"
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
