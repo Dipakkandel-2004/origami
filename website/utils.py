@@ -1,10 +1,10 @@
-
-
-from django.core.mail import send_mail
-from django.conf import settings
+import os
+import resend
 
 
 def send_contact_email(inquiry):
+
+    resend.api_key = os.getenv("RESEND_API_KEY")
 
     subject = f"New Contact Inquiry from {inquiry.name}"
 
@@ -19,10 +19,9 @@ Message:
 {inquiry.message}
 """
 
-    send_mail(
-        subject,
-        message,
-        settings.DEFAULT_FROM_EMAIL,
-        [settings.ADMIN_EMAIL],
-        fail_silently=False,
-    )
+    resend.Emails.send({
+        "from": "Origami Limousines <onboarding@resend.dev>",
+        "to": [os.getenv("ADMIN_EMAIL")],
+        "subject": subject,
+        "text": message,
+    })
